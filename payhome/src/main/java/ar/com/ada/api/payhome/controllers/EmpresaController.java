@@ -10,7 +10,7 @@ import ar.com.ada.api.payhome.entities.Empresa;
 import ar.com.ada.api.payhome.models.request.*;
 import ar.com.ada.api.payhome.models.response.*;
 import ar.com.ada.api.payhome.services.*;
-import ar.com.ada.api.payhome.utils.ValidadorIdImpositivo.EmpresaValidacionEnum;
+import ar.com.ada.api.payhome.utils.Validador.ResultadoValidacionEnum;
 
 @RestController
 @RequestMapping("/api")
@@ -23,9 +23,9 @@ public class EmpresaController {
     public ResponseEntity<GenericResponse> crearEmpresa(@RequestBody EmpresaRequest empresa) {
 
         GenericResponse resp = new GenericResponse();
-        EmpresaValidacionEnum resultadoValidacion = empresaService.validarDatosEmpresa(empresa.nombre, empresa.idImpositivo);
+        ResultadoValidacionEnum resultadoValidacion = empresaService.validarDatosEmpresa(empresa.nombre, empresa.idImpositivo);
 
-        if(resultadoValidacion != EmpresaValidacionEnum.OK){
+        if(resultadoValidacion != ResultadoValidacionEnum.OK){
             resp.isOk = false;
             resp.message = "No se pudo validar la empresa: " + resultadoValidacion;
             return ResponseEntity.badRequest().body(resp);

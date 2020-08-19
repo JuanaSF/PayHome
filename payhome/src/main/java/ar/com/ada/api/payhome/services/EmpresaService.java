@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 import ar.com.ada.api.payhome.entities.Empresa;
 import ar.com.ada.api.payhome.entities.Pais.TipoIdImpositivoEnum;
 import ar.com.ada.api.payhome.repos.EmpresaRepository;
-import ar.com.ada.api.payhome.utils.ValidadorIdImpositivo;
-import ar.com.ada.api.payhome.utils.ValidadorIdImpositivo.EmpresaValidacionEnum;
+import ar.com.ada.api.payhome.utils.Validador;
+import ar.com.ada.api.payhome.utils.Validador.ResultadoValidacionEnum;
 
 @Service
 public class EmpresaService {
@@ -32,10 +32,10 @@ public class EmpresaService {
         return empresa.getEmpresaId();
     }
 
-    public EmpresaValidacionEnum validarDatosEmpresa(String nombre, String idImpositivo) {
+    public ResultadoValidacionEnum validarDatosEmpresa(String nombre, String idImpositivo) {
 
-        ValidadorIdImpositivo validador = new ValidadorIdImpositivo();
-        EmpresaValidacionEnum resVal = validador.validarDatos(nombre, idImpositivo);
+        Validador validador = new Validador();
+        ResultadoValidacionEnum resVal = validador.validarDatos(nombre, idImpositivo);
 
         return resVal;
     }
