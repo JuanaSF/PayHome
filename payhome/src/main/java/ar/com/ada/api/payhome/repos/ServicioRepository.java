@@ -3,10 +3,9 @@ package ar.com.ada.api.payhome.repos;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import ar.com.ada.api.payhome.entities.Deudor;
+import ar.com.ada.api.payhome.entities.Servicio;
 
 @Repository
-public interface DeudorRepository extends JpaRepository<Deudor, Integer> {
-
-	Deudor findById(int id);  
+public interface ServicioRepository extends JpaRepository<Servicio, Integer>{
+    
 }

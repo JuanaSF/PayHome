@@ -18,8 +18,8 @@ public class DeudorService {
     DeudorRepository deudorRepo;
 
     public Integer registrarDeudor(Integer paisId, TipoIdImpositivoEnum tipoIdImpositivo, String idImpositivo,
-			String nombre) {
-        
+            String nombre) {
+
         Deudor deudor = new Deudor();
         deudor.setPaisId(paisId);
         deudor.setTipoIdImpositivo(tipoIdImpositivo);
@@ -27,21 +27,25 @@ public class DeudorService {
         deudor.setNombre(nombre);
         deudorRepo.save(deudor);
 
-        if(deudor.getDeudorId() == null)
+        if (deudor.getDeudorId() == null)
             return null;
-        
-        return deudor.getDeudorId();
-	}
 
-	public ResultadoValidacionEnum validarDatosDeudor(String nombre, String idImpositivo) {
-        
+        return deudor.getDeudorId();
+    }
+
+    public ResultadoValidacionEnum validarDatosDeudor(String nombre, String idImpositivo) {
+
         Validador validador = new Validador();
         ResultadoValidacionEnum resVal = validador.validarDatos(nombre, idImpositivo);
         return resVal;
-	}
+    }
 
-	public List<Deudor> listarDeudores() {
-		return deudorRepo.findAll();
-	}
+    public List<Deudor> listarDeudores() {
+        return deudorRepo.findAll();
+    }
+
+    public Deudor buscarPor(Integer id) {
+        return deudorRepo.findById((int) id);
+    }
 
 }

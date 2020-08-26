@@ -42,6 +42,11 @@ public class EmpresaService {
 
 	public List<Empresa> listarEmpresas() {
 		return empresaRepo.findAll();
-	}
+    }
+    
+    public Empresa buscarPor(Integer empresaId) {
+
+        return empresaRepo.findById((int) empresaId);
+    }
     
 }

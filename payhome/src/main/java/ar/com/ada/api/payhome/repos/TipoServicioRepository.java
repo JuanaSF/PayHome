@@ -7,5 +7,5 @@ import ar.com.ada.api.payhome.entities.TipoServicio;
 
 @Repository
 public interface TipoServicioRepository extends JpaRepository<TipoServicio, Integer> {
-    
+
 }
